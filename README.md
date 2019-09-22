@@ -26,12 +26,12 @@ O Jenkins iniciado tem acesso ao docker-cli do seu host com usuário root, dessa
 Os exemplos descritos nessa seção foram testados, quando existir a necessidade de configuração de funcionalidades extras as mesmas serão descritas no exemplo.
  
 #### Exemplo 1
-O exemplo abaixo tem como finalidade realizar a execução de testes automáticos e enviar métricas ao SonarQube.
+O exemplo abaixo tem como finalidade realizar a execução de testes automáticos de um [microserviço](https://github.com/gnunesmoura/central-controle) e enviar métricas ao SonarQube.
  
 Passoa a Passo:
 1. Crie um projeto no SonarQube;
 2. Configure um token de acesso para o Jenkins;
-3. Crie um Pipeline Job com o Pipeline descrito abaixo:
+3. Crie um Pipeline Job com o Pipeline descrito abaixo: 
 ```
 pipeline {
     agent {
@@ -71,8 +71,6 @@ pipeline {
     }
 }
 ```
- 
 4. Salve o Pipeline criado.
 
 Para iniciar o Job insira o token de acesso criado no SonarQube.
- 

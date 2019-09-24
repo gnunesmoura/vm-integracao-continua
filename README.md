@@ -41,8 +41,10 @@ pipeline {
         }
     }
     
-    parameters { string(name: 'PROJECT_KEY', defaultValue: 'central-controle', description: 'Identificação do projeto') }
-    parameters { string(name: 'SONAR_TOKEN', defaultValue: 'token', description: 'Token de acesso ao SonarQube') }
+    parameters { 
+        string(name: 'PROJECT_KEY', defaultValue: 'central-controle', description: 'Identificação do projeto') 
+        string(name: 'SONAR_TOKEN', defaultValue: 'token', description: 'Token de acesso ao SonarQube')
+    }
  
     stages {
         stage('Clonando o repositório') {
@@ -51,7 +53,7 @@ pipeline {
             }
         }
         
-        stage('Instalando dependências’) {
+        stage('Instalando dependências') {
             steps {
                 sh 'npm i'
             }
@@ -65,7 +67,7 @@ pipeline {
     
         stage('Realizar coleta de métricas') {
             steps {
-                sh '/home/vagrant/sonar-scanner/bin/sonar-scanner   -Dsonar.projectKey="${PROJECT_KEY}"   -Dsonar.sources=.   -Dsonar.host.url=http://sonarqube:9000   -Dsonar.login="${SONAR_TOKEN}"'
+                sh '/home/vagrant/sonar-scanner/bin/sonar-scanner   -Dsonar.projectKey="${PROJECT_KEY}"   -Dsonar.sources=. -Dsonar.host.url=http://sonarqube:9000   -Dsonar.login="${SONAR_TOKEN}"'
             }
         }
     }

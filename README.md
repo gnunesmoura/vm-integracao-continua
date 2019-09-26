@@ -14,8 +14,8 @@ O passo-a-passo abaixo descreve o provisionamento e acesso na vm utilizando o ba
 4. `vagrant ssh`
  
 Agora, dentro da máquina virtual iremos iniciar os containers [jenkinsci](https://hub.docker.com/r/jenkinsci/blueocean) e [sonarqube](https://hub.docker.com/_/sonarqube) com algumas configurações adicionais:
-* `docker run -u root -d --name jenkins -p 8080:8080 -p 50000:50000 -v /var/jenkins_home:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock jenkinsci/blueocean`
-* `docker run -d --name sonarqube -p 9000:9000 sonarqube`
+* `docker run --restart always -u root -d --name jenkins -p 8080:8080 -p 50000:50000 -v /var/jenkins_home:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock jenkinsci/blueocean`
+* `docker run --restart always -d --name sonarqube -p 9000:9000 sonarqube`
  
 Pronto, em alguns segundos os serviços [Jenkins](http://localhost:8080) e [SonarQube](http://localhost:9000) vão estar disponiveis.
  
